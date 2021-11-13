@@ -1,0 +1,28 @@
+.question-image{
+    border: 2px solid black;
+    padding: 50px;
+    border-radius: 10px;
+    background-color: white;
+    
+}
+.answer-section{
+    padding: 20px;
+}
+.btn{
+    font-size: 1rem;
+    padding: 1rem 0;
+    width: 15rem;
+    text-align: center;
+    border: 0.1rem solid black;
+    margin-bottom: 1rem;
+    color: #56a5eb;
+    background-color: white;
+    border-radius: 10px;
+}
+.btn:hover {
+    cursor: pointer;
+    box-shadow: 0 0.4rem 1.4rem 0 #56a5eb;
+    transform: translateY(-0.1rem);
+    transition: transform 150ms;
+  }
+  

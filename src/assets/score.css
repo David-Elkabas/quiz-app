@@ -1,0 +1,7 @@
+.score-place{
+    text-align: right;
+    margin-left: 100px;
+    border-radius: 20px;
+    background-color: white;
+    padding: 10px;
+}

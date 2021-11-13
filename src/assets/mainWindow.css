@@ -1,0 +1,17 @@
+.main-window{
+    width: 275px;
+    height: 550px;
+    background-color: aqua;
+    padding: 50px;
+    border-radius: 10px;
+    text-align: center;
+}
+.main-window-header{
+    padding-bottom: 20px;
+}
+.lives-and-score{
+    display:flex;
+    flex-direction:row;
+    padding-bottom: 20px;
+
+}
