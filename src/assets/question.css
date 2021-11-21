@@ -1,12 +1,12 @@
 .question-image{
-    border: 2px solid black;
-    padding: 50px;
-    border-radius: 10px;
+    border: 0.2rem solid black;
+    padding: 3rem;
+    border-radius: 1rem;
     background-color: white;
     
 }
 .answer-section{
-    padding: 20px;
+    padding: 1rem;
 }
 .btn{
     font-size: 1rem;
@@ -17,7 +17,7 @@
     margin-bottom: 1rem;
     color: #56a5eb;
     background-color: white;
-    border-radius: 10px;
+    border-radius: 1rem;
 }
 .btn:hover {
     cursor: pointer;
@@ -25,4 +25,11 @@
     transform: translateY(-0.1rem);
     transition: transform 150ms;
   }
+
+.btn.correct{
+    background-color:seagreen;
+}
+.btn.wrong{
+    background-color:crimson;
+}
   
