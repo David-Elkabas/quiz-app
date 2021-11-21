@@ -1,9 +1,6 @@
 import "../assets/lives.css"
 import { useSelector } from 'react-redux'
 
-
-
-
 const Lives = () => {
     const lives = useSelector((state) => state.lives.value)
     return (

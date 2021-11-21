@@ -1,12 +1,12 @@
 import "../assets/score.css"
-
-var currentScore = 200
+import { useSelector } from 'react-redux'
 
 const Score = () => {
+    const score = useSelector((state) => state.score.value)
     return (
 
         <div className="score-place">
-            <h3>score:{currentScore}</h3>
+            <h3>score:{score}</h3>
         </div>
     );
 }
