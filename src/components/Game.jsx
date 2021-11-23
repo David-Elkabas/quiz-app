@@ -3,18 +3,20 @@ import Score from "./Score";
 import "../assets/game.css"
 import Question from "./Question";
 import { useState, useEffect } from "react"
-import axios from 'axios';
 
-const MainWindow = () => {
-    const [question, setQuestion] = useState();
+const Game = (data) => {
+    const [gameStates, setgameStates] = useState({
+        questions: data.triviaData,
+        questionIndex: 0,
+        isGameOver: false,
+    });
+    const { questions, questionIndex, isGameOver } = gameStates;
 
     useEffect(() => {
         console.log("finish fetching");
-        // const fetchQuestions = async () => {
-        //     const response = await axios.get('http://localhost:3000/results');
-        //     setQuestion(response.data);
-        // };
-        // fetchQuestions()
+        // console.log(questions);
+        // console.log(questions[questionIndex]);
+
     }, [])
 
     return (
@@ -23,14 +25,20 @@ const MainWindow = () => {
             <div className="main-window-header">
                 <h1>QUIZ APP</h1>
             </div>
-            <div className="lives-and-score">
-                <div><Lives /></div>
-                <div><Score /></div>
-            </div>
-            <div><Question question={question}
-                setQuestion={setQuestion} /></div>
+            {!isGameOver ? (
+                <div>
+                    <div className="lives-and-score">
+                        <div><Lives /></div>
+                        <div><Score /></div>
+                    </div>
+                    <div><Question question={questions[questionIndex]} /></div>
+                </div>)
+                : (<div><p>end</p></div>//TODO: here will be the endScreen component
+                )}
+
+
         </div>
     );
 }
 
-export default MainWindow;
+export default Game;

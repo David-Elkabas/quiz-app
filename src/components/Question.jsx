@@ -5,28 +5,24 @@ import { incrementScore } from '../features/scoreSlice'
 import { useState, useEffect } from "react"
 // import axios from 'axios';
 
-const Question = (questions, setQuestions) => {
+const Question = (data) => {
     const dispatch = useDispatch()
-
-    const [options, setOptions] = useState();
-    const [currentQuestion, setCurrentQuestion] = useState(0);
-
+    const [options, setOptions] = useState({
+        optionA: data.question.incorrect_answers[0],
+        optionB: data.question.incorrect_answers[1],
+        optionC: data.question.incorrect_answers[2],
+        optionD: data.question.correct_answer,
+    });
+    const { optionA, optionB, optionC, optionD } = options;
 
     useEffect(() => {
-        // setOptions(
-        //     questions &&
-        //     handleShuffle([
-        //         questions[currentQuestion]?.correct_answer,
-        //         ...questions[currentQuestion]?.incorrect_answer,
-        //     ])
-        // );
+        console.log(options);
+
     }, [])
 
-    // console.log(options);
-
-    const handleShuffle = (optionss) => {
-        return optionss.sort(() => Math.random() - 0.5);
-    };
+    // const handleShuffle = (options) => {
+    //     return options.sort(() => Math.random() - 0.5);
+    // };
 
     return (
         <div>
@@ -35,10 +31,10 @@ const Question = (questions, setQuestions) => {
             </div>
 
             <div className="answer-section">
-                <button className="btn correct" onClick={() => { dispatch(increment()); dispatch(incrementScore()) }}>answer 1</button>
-                <button className="btn wrong" onClick={() => dispatch(decrement())}>answer 2</button>
-                <button className="btn">answer 3</button>
-                <button className="btn" onClick={() => dispatch(incrementScore())}>answer 4</button>
+                <button className="btn correct" onClick={() => { dispatch(increment()); dispatch(incrementScore()) }}>{optionA}</button>
+                <button className="btn wrong" onClick={() => dispatch(decrement())}>{optionB}</button>
+                <button className="btn">{optionC}</button>
+                <button className="btn" onClick={() => dispatch(incrementScore())}>{optionD}</button>
             </div>
                 
             }
