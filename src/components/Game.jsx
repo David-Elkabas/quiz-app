@@ -1,16 +1,42 @@
+import "../assets/game.css"
 import Lives from "./Lives";
 import Score from "./Score";
-import "../assets/game.css"
+import EndScreen from "./EndScreen";
 import Question from "./Question";
 import { useState, useEffect } from "react"
+import { useSelector } from 'react-redux'
 
 const Game = (data) => {
-    const [gameStates, setgameStates] = useState({
+    const [gameStates, setGameStates] = useState({
         questions: data.triviaData,
         questionIndex: 0,
-        isGameOver: false,
+        isGameOver: false
     });
+
+    const lives = useSelector((state) => state.lives.value)
+
+    if (lives === 0) {
+        setGameStates({
+            questions: 0,
+            questionIndex: 0,
+            isGameOver: true
+        });
+    }
+
     const { questions, questionIndex, isGameOver } = gameStates;
+
+    // let pageContent;
+    // if (!isGameOver){
+    //     pageContent = ( <div>
+    //     <div className="lives-and-score">
+    //         <div><Lives /></div>
+    //         <div><Score /></div>
+    //     </div>
+    //     <div><Question question={questions[questionIndex]} /></div>
+    // </div> )
+    // } else{
+    //     pageContent = <div><EndScreen /></div>//TODO: here will be the endScreen component
+    // }
 
     useEffect(() => {
         console.log("finish fetching");
@@ -33,7 +59,7 @@ const Game = (data) => {
                     </div>
                     <div><Question question={questions[questionIndex]} /></div>
                 </div>)
-                : (<div><p>end</p></div>//TODO: here will be the endScreen component
+                : (<div><EndScreen /></div>//TODO: here will be the endScreen component
                 )}
 
 
