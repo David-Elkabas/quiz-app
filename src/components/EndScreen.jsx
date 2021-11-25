@@ -1,10 +1,11 @@
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
+import { setLives } from "../features/livesSlice"
 
-const EndScreen = () => {
+const EndScreen = ({ onRetryClick }) => {
+    const dispatch = useDispatch()
 
     const score = useSelector((state) => state.score.value);
-
-    const bestScore = 0; // TODO: change to real Data
+    const bestScore = 0; // TODO: change to real Data 
 
     return (
         <div className="end-screen">
@@ -13,7 +14,7 @@ const EndScreen = () => {
 
             <p>your score: {score} </p>
             <p>Best Score: {bestScore}</p>
-            <button className="end-screen__button">Retry?</button>
+            <button onClick={onRetryClick}>Retry?</button>
         </div>
     );
 }

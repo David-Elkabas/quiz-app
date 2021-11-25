@@ -4,44 +4,40 @@ import Score from "./Score";
 import EndScreen from "./EndScreen";
 import Question from "./Question";
 import { useState, useEffect } from "react"
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
+import { setLives } from "../features/livesSlice"
 
-const Game = (data) => {
+const Game = ({ triviaData }) => {
+
     const [gameStates, setGameStates] = useState({
-        questions: data.triviaData,
+        questions: triviaData,
         questionIndex: 0,
         isGameOver: false
     });
-
+    const dispatch = useDispatch()
     const lives = useSelector((state) => state.lives.value)
+    const { questions, questionIndex, isGameOver } = gameStates;
 
-    if (lives === 0) {
+    console.log(lives);
+
+    if (lives === 0 && isGameOver === false) {
         setGameStates({
             questions: 0,
             questionIndex: 0,
             isGameOver: true
         });
     }
-
-    const { questions, questionIndex, isGameOver } = gameStates;
-
-    // let pageContent;
-    // if (!isGameOver){
-    //     pageContent = ( <div>
-    //     <div className="lives-and-score">
-    //         <div><Lives /></div>
-    //         <div><Score /></div>
-    //     </div>
-    //     <div><Question question={questions[questionIndex]} /></div>
-    // </div> )
-    // } else{
-    //     pageContent = <div><EndScreen /></div>//TODO: here will be the endScreen component
-    // }
-
+    const restartGame = (() => {
+        console.log("here");
+        setGameStates({
+            questions: triviaData,
+            questionIndex: 0,
+            isGameOver: false
+        });
+        dispatch(setLives(3))
+    })
     useEffect(() => {
         console.log("finish fetching");
-        // console.log(questions);
-        // console.log(questions[questionIndex]);
 
     }, [])
 
@@ -59,10 +55,8 @@ const Game = (data) => {
                     </div>
                     <div><Question question={questions[questionIndex]} /></div>
                 </div>)
-                : (<div><EndScreen /></div>//TODO: here will be the endScreen component
+                : (<div><EndScreen onRetryClick={restartGame} /></div>//TODO: here will be the endScreen component
                 )}
-
-
         </div>
     );
 }

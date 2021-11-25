@@ -17,10 +17,13 @@ export const livesSlice = createSlice({
         incrementByAmount: (state, action) => {
             state.value += action.payload
         },
+        setLives: (state, action) => {
+            state.value = action.payload
+        },
     },
 })
 
 // Action creators are generated for each case reducer function
-export const { increment, decrement, incrementByAmount } = livesSlice.actions
+export const { increment, decrement, incrementByAmount, setLives } = livesSlice.actions
 
 export default livesSlice.reducer
