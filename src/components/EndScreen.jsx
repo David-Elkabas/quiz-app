@@ -1,5 +1,6 @@
 import { useDispatch, useSelector } from 'react-redux'
 import { setLives } from "../features/livesSlice"
+import Score from './Score';
 
 const EndScreen = ({ onRetryClick }) => {
     const dispatch = useDispatch()
@@ -12,7 +13,7 @@ const EndScreen = ({ onRetryClick }) => {
             <h1>Game Over</h1>
             <h3>you ran out of lives</h3>
 
-            <p>your score: {score} </p>
+            <p><Score /> </p>
             <p>Best Score: {bestScore}</p>
             <button onClick={onRetryClick}>Retry?</button>
         </div>

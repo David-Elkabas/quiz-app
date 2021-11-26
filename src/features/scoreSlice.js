@@ -11,11 +11,13 @@ export const scoreSlice = createSlice({
         incrementScore: (state) => {
             state.value += 10
         },
-
+        setScore: (state, action) => {
+            state.value = action.payload
+        },
     },
 })
 
 // Action creators are generated for each case reducer function
-export const { incrementScore } = scoreSlice.actions
+export const { incrementScore, setScore } = scoreSlice.actions
 
 export default scoreSlice.reducer
